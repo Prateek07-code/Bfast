@@ -1,0 +1,218 @@
+Here is the updated website code containing **only** the 11 items from your final selected list.
+
+I have optimized the notes to ensure your mom remembers the specific texture requirements (mushy/soft) for your dad and grandpa.
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mom's Healthy Menu</title>
+    <style>
+        :root {
+            --bg-color: #FAFAF9; /* Off-white */
+            --card-bg: #FFFFFF;
+            --text-primary: #1C1917; /* Soft Black */
+            --text-secondary: #57534E; /* Stone Grey */
+            --accent: #65A30D; /* Fresh Green */
+            --highlight: #EA580C; /* Burnt Orange */
+            --font-main: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            font-family: var(--font-main);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 20px;
+            color: var(--text-primary);
+        }
+
+        .container {
+            background-color: var(--card-bg);
+            padding: 40px 30px;
+            border-radius: 24px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+            text-align: center;
+            max-width: 450px;
+            width: 100%;
+            border: 1px solid #E7E5E4;
+        }
+
+        h1 {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            color: var(--text-secondary);
+            margin-bottom: 30px;
+            font-weight: 700;
+        }
+
+        .result-box {
+            min-height: 240px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 30px;
+            background: #F5F5F4;
+            border-radius: 16px;
+            padding: 25px;
+            position: relative;
+        }
+
+        #dish-name {
+            font-size: 1.7rem;
+            font-weight: 800;
+            margin: 0 0 10px 0;
+            line-height: 1.25;
+            color: var(--text-primary);
+        }
+
+        #side-dish {
+            font-size: 1.1rem;
+            color: var(--highlight);
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        #note {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            background: #FFFFFF;
+            padding: 12px;
+            border-radius: 8px;
+            width: 100%;
+            box-sizing: border-box;
+            border-left: 4px solid var(--accent);
+            text-align: left;
+        }
+
+        button {
+            background-color: var(--text-primary);
+            color: white;
+            border: none;
+            padding: 18px 40px;
+            font-size: 1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            width: 100%;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        button:hover {
+            background-color: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(101, 163, 13, 0.3);
+        }
+
+        /* Animation */
+        .fade-in {
+            animation: fadeIn 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Breakfast Menu</h1>
+        
+        <div class="result-box" id="result-container">
+            <div id="dish-name">Good Morning!</div>
+            <div id="side-dish">Click below to decide</div>
+            <div id="note">Soft, healthy, and sugar-free options.</div>
+        </div>
+
+        <button onclick="getBreakfast()">What should I make?</button>
+    </div>
+
+    <script>
+        const menu = [
+            { 
+                dish: "Moong Dal Chillas", 
+                side: "w/ Mint Chutney", 
+                note: "Soak dal overnight & grind. Make them slightly thick and soft (Pudla style), not crispy." 
+            },
+            { 
+                dish: "Small Besan Chillas", 
+                side: "w/ Mint Chutney", 
+                note: "Add spinach (palak) to batter. Make small coin-sized chillas; they stay softer than big ones." 
+            },
+            { 
+                dish: "Vegetable Oats Upma", 
+                side: "w/ Fresh Curd", 
+                note: "Use 50% Oats and 50% veggies. Make it slightly soupy; it dries up by the time you eat." 
+            },
+            { 
+                dish: "Paneer Morich (Bengali)", 
+                side: "w/ Sautéed Veggies", 
+                note: "Cubes of Paneer tossed in Ghee & Black Pepper. Soft substitute for Aloo Morich." 
+            },
+            { 
+                dish: "Onion Uttapam", 
+                side: "w/ Coconut Chutney", 
+                note: "Make the batter thick and spongy. Do not roast it crisp." 
+            },
+            { 
+                dish: "Veggie Uttapam", 
+                side: "w/ Green Chutney", 
+                note: "Mix grated carrots and beans directly into the batter." 
+            },
+            { 
+                dish: "Idli Sambhar", 
+                side: "w/ Mild Sambhar", 
+                note: "Sprinkle water on Idlis before microwaving later so they don't get hard." 
+            },
+            { 
+                dish: "Boiled Eggs + Fruit", 
+                side: "Papaya or Apple", 
+                note: "If Grandpa finds yolks dry, mash them with a little butter and pepper." 
+            },
+            { 
+                dish: "Steamed Sprouts (Usal)", 
+                side: "Lemon & Jeera", 
+                note: "Pressure cook sprouts (1-2 whistles) until mushy. Do not serve crunchy/raw." 
+            },
+            { 
+                dish: "Paneer & Matar Ghughni", 
+                side: "Eat with Spoon", 
+                note: "Boil peas until butter-soft. Toss with small paneer cubes and mild chaat masala." 
+            },
+            { 
+                dish: "Cornflakes / Muesli", 
+                side: "w/ Hot Milk", 
+                note: "Use Unsweetened. Pour boiling milk over cereal and cover for 5 mins to soften." 
+            }
+        ];
+
+        function getBreakfast() {
+            const container = document.getElementById('result-container');
+            container.classList.remove('fade-in');
+            void container.offsetWidth; // Trigger reflow
+
+            const randomItem = menu[Math.floor(Math.random() * menu.length)];
+
+            document.getElementById('dish-name').innerText = randomItem.dish;
+            document.getElementById('side-dish').innerText = randomItem.side;
+            document.getElementById('note').innerText = randomItem.note;
+
+            container.classList.add('fade-in');
+        }
+    </script>
+</body>
+</html>
+```
